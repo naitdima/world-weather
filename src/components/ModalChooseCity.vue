@@ -1,33 +1,36 @@
 <template>
-  <AppModal
+  <app-modal
       class="modal-choose-city"
       title="Choose a city"
       description="To find city start typing and pick one from the suggestions"
   >
-    <AppInput
+    <app-input
       class="modal-choose-city__input"
       v-model="city"
       placeholder="Search city"
     />
     <div class="modal-choose-city__actions">
-      <AppButton
+      <app-button
         class="modal-choose-city__action"
         @click="clear"
       >
         Clear
-      </AppButton>
-      <AppButton
+      </app-button>
+      <app-button
         class="modal-choose-city__action"
         type="primary"
-        @click="$emit('close')"
+        @click="close"
       >
         Cancel
-      </AppButton>
-      <AppButton class="modal-choose-city__action">
+      </app-button>
+      <app-button
+          class="modal-choose-city__action"
+          @click="add"
+      >
         Add
-      </AppButton>
+      </app-button>
     </div>
-  </AppModal>
+  </app-modal>
 </template>
 
 <script>
@@ -51,6 +54,14 @@ export default {
   methods: {
     clear() {
       this.city = ''
+    },
+    close() {
+      this.$emit('close')
+    },
+    add() {
+      // @todo: validation
+      this.$emit('add', this.city)
+      this.close()
     }
   }
 }
