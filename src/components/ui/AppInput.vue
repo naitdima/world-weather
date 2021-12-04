@@ -52,7 +52,7 @@ export default {
   outline: none;
 
   &::placeholder {
-    color: var(--color-text-secondary);
+    color: var(--color-text-placeholder);
   }
 }
 

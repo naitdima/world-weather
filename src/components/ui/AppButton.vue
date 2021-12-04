@@ -47,7 +47,7 @@ export default {
   line-height: 24px;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--color-text-secondary);
+  color: var(--color-text-placeholder);
   border: none;
   padding: 0;
   cursor: pointer;
