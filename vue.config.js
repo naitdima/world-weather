@@ -1,6 +1,6 @@
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/<REPO>/'
+    ? '/world-weather/'
     : '/'
   chainWebpack: config => {
     config.module
