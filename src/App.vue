@@ -159,9 +159,11 @@ export default {
 }
 
 .main-page__weather-cards {
+  width: 100%;
   margin-top: 80px;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 350px);
   gap: 40px;
 }
 
