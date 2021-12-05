@@ -22,6 +22,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/variables.scss";
+
 .app-modal {
   position: fixed;
   top: 0;
@@ -39,6 +41,10 @@ export default {
   background: var(--color-white);
   box-shadow: 0 16px 24px rgba(0, 0, 0, 0.14), 0 6px 30px rgba(0, 0, 0, 0.12), 0 8px 10px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
+
+  @media (max-width: $viewport-tablet) {
+    padding: 14px;
+  }
 }
 
 .app-modal__title {
@@ -46,6 +52,11 @@ export default {
   line-height: 38px;
   font-weight: 700;
   color: var(--color-text-primary);
+
+  @media (max-width: $viewport-tablet) {
+    font-size: 24px;
+    line-height: 28px;
+  }
 }
 
 .app-modal__description {
@@ -53,6 +64,12 @@ export default {
   font-size: 24px;
   line-height: 24px;
   color: var(--color-text-regular);
+
+  @media (max-width: $viewport-tablet) {
+    margin-top: 8px;
+    font-size: 18px;
+    line-height: 24px;
+  }
 }
 
 .app-modal__overlay {

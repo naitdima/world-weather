@@ -42,6 +42,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/variables.scss";
+
 .app-button {
   font-size: 16px;
   line-height: 24px;
@@ -52,6 +54,11 @@ export default {
   padding: 0;
   cursor: pointer;
   background-color: transparent;
+
+  @media (max-width: $viewport-tablet) {
+    font-size: 14px;
+    line-height: 20px;
+  }
 
   &:hover {
     opacity: 0.8;
@@ -74,6 +81,11 @@ export default {
     background-color: var(--color-primary);
     box-shadow: 0 4px 5px rgba(0, 0, 0, 0.14), 0 1px 10px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 50px;
+
+    @media (max-width: $viewport-tablet) {
+      width: 50px;
+      height: 50px;
+    }
   }
 }
 
@@ -81,5 +93,10 @@ export default {
   width: 14px;
   height: 14px;
   fill: var(--color-white);
+
+  @media (max-width: $viewport-tablet) {
+    width: 12px;
+    height: 12px;
+  }
 }
 </style>

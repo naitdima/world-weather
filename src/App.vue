@@ -129,12 +129,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/variables.scss";
+
 .main-page {
   padding: 24px 24px 34px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: var(--color-text-primary);
+
+  @media (max-width: $viewport-tablet) {
+    padding: 16px 16px 80px 16px;
+  }
 }
 
 .main-page__title {
@@ -142,6 +148,18 @@ export default {
   font-size: 70px;
   line-height: 80px;
   font-weight: 300;
+
+  @media (max-width: $viewport-desktop) {
+    font-size: 50px;
+    line-height: 60px;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: $viewport-tablet) {
+    font-size: 40px;
+    line-height: 50px;
+    margin-bottom: 8px;
+  }
 }
 
 .main-page__description {
@@ -149,13 +167,23 @@ export default {
   font-size: 24px;
   line-height: 24px;
   color: var(--color-text-regular);
+
+  @media (max-width: $viewport-tablet) {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 18px;
+  }
 }
 
 .main-page__error {
-  margin-top: 10px;
   font-size: 16px;
   line-height: 24px;
   color: var(--color-error);
+
+  @media (max-width: $viewport-tablet) {
+    font-size: 14px;
+    line-height: 18px;
+  }
 }
 
 .main-page__weather-cards {
@@ -165,11 +193,23 @@ export default {
   justify-content: center;
   grid-template-columns: repeat(auto-fill, 350px);
   gap: 40px;
+
+  @media (max-width: $viewport-tablet) {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .main-page__weather-card {
   &_current {
     width: 824px;
+  }
+
+  @media (max-width: $viewport-tablet) {
+    width: 100%;
+    max-width: 460px;
   }
 }
 
@@ -177,5 +217,10 @@ export default {
   position: fixed;
   right: 45px;
   bottom: 34px;
+
+  @media (max-width: $viewport-tablet) {
+    right: 15px;
+    bottom: 15px;
+  }
 }
 </style>

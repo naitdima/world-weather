@@ -36,16 +36,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/variables.scss";
+
 $input-height: 57px;
+$error-height: 24px;
+$error-margin-top: 12px;
+
+$input-height-mobile: 40px;
+$error-height-mobile: 14px;
+$error-margin-top-mobile: 8px;
 
 .app-input {
   position: relative;
-  padding-bottom: 36px;
+  padding-bottom: calc(#{$error-height} + #{$error-margin-top});
 
   &_error {
     .app-input__input {
       border-color: var(--color-error);
     }
+  }
+
+  @media (max-width: $viewport-tablet) {
+    padding-bottom: calc(#{$error-height-mobile} + #{$error-margin-top-mobile});
   }
 }
 
@@ -65,15 +77,28 @@ $input-height: 57px;
   &::placeholder {
     color: var(--color-text-placeholder);
   }
+
+  @media (max-width: $viewport-tablet) {
+    font-size: 18px;
+    line-height: 24px;
+    padding: 8px 0;
+    height: $input-height-mobile;
+  }
 }
 
 .app-input__error {
   position: absolute;
-  top: calc(#{$input-height} + 12px);
+  top: calc(#{$input-height} + #{$error-margin-top});
   left: 0;
   width: 100%;
   font-size: 16px;
-  line-height: 24px;
+  line-height: $error-height;
   color: var(--color-error);
+
+  @media (max-width: $viewport-tablet) {
+    font-size: 12px;
+    line-height: $error-height-mobile;
+    top: calc(#{$input-height-mobile} + #{$error-margin-top-mobile});
+  }
 }
 </style>

@@ -15,13 +15,13 @@
         <div class="card-weather__params-cell">{{ title }}</div>
         <div class="card-weather__params-cell">{{ value }}</div>
       </div>
-      <p
-          class="card-weather__timer"
-          :key="timerKey"
-      >
-        {{ getTimeAgo(weather.updatedDate) }}
-      </p>
     </div>
+    <p
+        class="card-weather__timer"
+        :key="timerKey"
+    >
+      {{ getTimeAgo(weather.updatedDate) }}
+    </p>
     <div class="card-weather__actions">
       <app-button
           class="card-weather__action"
@@ -98,11 +98,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/variables.scss";
+
 .card-weather {
-  width: 350px;
   padding: 24px;
   box-shadow: 0 2px 10px rgba(10, 10, 10, 0.25);
   border-radius: 6px;
+
+  @media (max-width: $viewport-tablet) {
+    padding: 14px;
+  }
 }
 
 .card-weather__name {
@@ -110,12 +115,24 @@ export default {
   font-size: 32px;
   line-height: 38px;
   font-weight: 700;
+
+  @media (max-width: $viewport-tablet) {
+    font-size: 28px;
+    line-height: 32px;
+    margin-bottom: 8px;
+  }
 }
 
 .card-weather__location {
   margin-bottom: 40px;
   font-size: 18px;
   line-height: 24px;
+
+  @media (max-width: $viewport-tablet) {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 20px;
+  }
 }
 
 .card-weather__actions {
@@ -138,11 +155,24 @@ export default {
   &:not(:last-child) {
     margin-bottom: 16px;
   }
+
+  @media (max-width: $viewport-tablet) {
+    padding-bottom: 8px;
+
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
 }
 
 .card-weather__params-cell {
   font-size: 18px;
   line-height: 24px;
+
+  @media (max-width: $viewport-tablet) {
+    font-size: 16px;
+    line-height: 20px;
+  }
 }
 
 .card-weather__timer {
@@ -151,5 +181,11 @@ export default {
   font-size: 16px;
   line-height: 24px;
   color: var(--color-text-secondary);
+
+  @media (max-width: $viewport-tablet) {
+    margin-bottom: 24px;
+    font-size: 14px;
+    line-height: 20px;
+  }
 }
 </style>
