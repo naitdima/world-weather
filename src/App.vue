@@ -138,6 +138,10 @@ export default {
   align-items: center;
   color: var(--color-text-primary);
 
+  @media (max-width: $viewport-desktop) {
+    padding: 20px 20px 80px 20px;
+  }
+
   @media (max-width: $viewport-tablet) {
     padding: 16px 16px 80px 16px;
   }
@@ -150,9 +154,9 @@ export default {
   font-weight: 300;
 
   @media (max-width: $viewport-desktop) {
-    font-size: 50px;
-    line-height: 60px;
-    margin-bottom: 16px;
+    font-size: 55px;
+    line-height: 65px;
+    margin-bottom: 12px;
   }
 
   @media (max-width: $viewport-tablet) {
@@ -168,9 +172,13 @@ export default {
   line-height: 24px;
   color: var(--color-text-regular);
 
+  @media (max-width: $viewport-desktop) {
+    font-size: 20px;
+    margin-bottom: 18px;
+  }
+
   @media (max-width: $viewport-tablet) {
     font-size: 18px;
-    line-height: 24px;
     margin-bottom: 18px;
   }
 }
@@ -180,7 +188,7 @@ export default {
   line-height: 24px;
   color: var(--color-error);
 
-  @media (max-width: $viewport-tablet) {
+  @media (max-width: $viewport-desktop) {
     font-size: 14px;
     line-height: 18px;
   }
@@ -194,8 +202,13 @@ export default {
   grid-template-columns: repeat(auto-fill, 350px);
   gap: 40px;
 
-  @media (max-width: $viewport-tablet) {
+  @media (max-width: $viewport-desktop) {
     margin-top: 40px;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+
+  @media (max-width: $viewport-tablet) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -205,6 +218,11 @@ export default {
 .main-page__weather-card {
   &_current {
     width: 824px;
+
+    @media (max-width: $viewport-desktop) {
+      width: 100%;
+      max-width: 660px;
+    }
   }
 
   @media (max-width: $viewport-tablet) {
@@ -218,7 +236,7 @@ export default {
   right: 45px;
   bottom: 34px;
 
-  @media (max-width: $viewport-tablet) {
+  @media (max-width: $viewport-desktop) {
     right: 15px;
     bottom: 15px;
   }

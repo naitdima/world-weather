@@ -8,7 +8,7 @@
       ref="input"
       class="modal-choose-city__input"
       v-model="v$.name.$model"
-      error="LKDsdl mfsdlmflsdmf sldflkm"
+      :error="inputError"
       placeholder="Search city"
     />
     <div class="modal-choose-city__actions">
@@ -128,6 +128,11 @@ export default {
 ::v-global(.modal-choose-city) {
   width: 751px;
 
+  @media (max-width: $viewport-desktop) {
+    width: 80%;
+    max-width: 600px;
+  }
+
   @media (max-width: $viewport-tablet) {
     width: 95%;
   }
@@ -138,7 +143,7 @@ export default {
   width: 100%;
   margin-bottom: 104px;
 
-  @media (max-width: $viewport-tablet) {
+  @media (max-width: $viewport-desktop) {
     margin-top: 30px;
     margin-bottom: 60px;
   }

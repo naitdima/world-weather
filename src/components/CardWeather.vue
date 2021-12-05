@@ -105,6 +105,10 @@ export default {
   box-shadow: 0 2px 10px rgba(10, 10, 10, 0.25);
   border-radius: 6px;
 
+  @media (max-width: $viewport-desktop) {
+    padding: 20px;
+  }
+
   @media (max-width: $viewport-tablet) {
     padding: 14px;
   }
@@ -116,7 +120,7 @@ export default {
   line-height: 38px;
   font-weight: 700;
 
-  @media (max-width: $viewport-tablet) {
+  @media (max-width: $viewport-desktop) {
     font-size: 28px;
     line-height: 32px;
     margin-bottom: 8px;
@@ -128,7 +132,7 @@ export default {
   font-size: 18px;
   line-height: 24px;
 
-  @media (max-width: $viewport-tablet) {
+  @media (max-width: $viewport-desktop) {
     font-size: 14px;
     line-height: 20px;
     margin-bottom: 20px;
@@ -156,6 +160,14 @@ export default {
     margin-bottom: 16px;
   }
 
+  @media (max-width: $viewport-desktop) {
+    padding-bottom: 10px;
+
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  }
+
   @media (max-width: $viewport-tablet) {
     padding-bottom: 8px;
 
@@ -169,7 +181,7 @@ export default {
   font-size: 18px;
   line-height: 24px;
 
-  @media (max-width: $viewport-tablet) {
+  @media (max-width: $viewport-desktop) {
     font-size: 16px;
     line-height: 20px;
   }
@@ -182,8 +194,8 @@ export default {
   line-height: 24px;
   color: var(--color-text-secondary);
 
-  @media (max-width: $viewport-tablet) {
-    margin-bottom: 24px;
+  @media (max-width: $viewport-desktop) {
+    margin-bottom: 26px;
     font-size: 14px;
     line-height: 20px;
   }

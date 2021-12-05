@@ -56,7 +56,7 @@ $error-margin-top-mobile: 8px;
     }
   }
 
-  @media (max-width: $viewport-tablet) {
+  @media (max-width: $viewport-desktop) {
     padding-bottom: calc(#{$error-height-mobile} + #{$error-margin-top-mobile});
   }
 }
@@ -66,7 +66,6 @@ $error-margin-top-mobile: 8px;
   display: block;
   height: $input-height;
   font-size: 24px;
-  line-height: 24px;
   font-weight: 500;
   padding: 16px 0;
   color: var(--color-text-primary);
@@ -78,7 +77,7 @@ $error-margin-top-mobile: 8px;
     color: var(--color-text-placeholder);
   }
 
-  @media (max-width: $viewport-tablet) {
+  @media (max-width: $viewport-desktop) {
     font-size: 18px;
     line-height: 24px;
     padding: 8px 0;
@@ -95,7 +94,7 @@ $error-margin-top-mobile: 8px;
   line-height: $error-height;
   color: var(--color-error);
 
-  @media (max-width: $viewport-tablet) {
+  @media (max-width: $viewport-desktop) {
     font-size: 12px;
     line-height: $error-height-mobile;
     top: calc(#{$input-height-mobile} + #{$error-margin-top-mobile});

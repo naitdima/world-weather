@@ -55,7 +55,7 @@ export default {
   cursor: pointer;
   background-color: transparent;
 
-  @media (max-width: $viewport-tablet) {
+  @media (max-width: $viewport-desktop) {
     font-size: 14px;
     line-height: 20px;
   }
@@ -82,7 +82,7 @@ export default {
     box-shadow: 0 4px 5px rgba(0, 0, 0, 0.14), 0 1px 10px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 50px;
 
-    @media (max-width: $viewport-tablet) {
+    @media (max-width: $viewport-desktop) {
       width: 50px;
       height: 50px;
     }
@@ -94,7 +94,7 @@ export default {
   height: 14px;
   fill: var(--color-white);
 
-  @media (max-width: $viewport-tablet) {
+  @media (max-width: $viewport-desktop) {
     width: 12px;
     height: 12px;
   }
