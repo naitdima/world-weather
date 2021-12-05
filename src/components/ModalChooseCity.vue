@@ -130,7 +130,7 @@ export default {
 .modal-choose-city__input {
   margin-top: 51px;
   width: 100%;
-  margin-bottom: 140px;
+  margin-bottom: 104px;
 }
 
 .modal-choose-city__actions {

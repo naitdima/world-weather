@@ -36,7 +36,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$input-height: 57px;
+
 .app-input {
+  position: relative;
+  padding-bottom: 36px;
+
   &_error {
     .app-input__input {
       border-color: var(--color-error);
@@ -47,7 +52,7 @@ export default {
 .app-input__input {
   width: 100%;
   display: block;
-  height: 57px;
+  height: $input-height;
   font-size: 24px;
   line-height: 24px;
   font-weight: 500;
@@ -63,8 +68,10 @@ export default {
 }
 
 .app-input__error {
+  position: absolute;
+  top: calc(#{$input-height} + 12px);
+  left: 0;
   width: 100%;
-  margin-top: 12px;
   font-size: 16px;
   line-height: 24px;
   color: var(--color-error);
