@@ -5,6 +5,7 @@
       description="To find city start typing and pick one from the suggestions"
   >
     <app-input
+      ref="input"
       class="modal-choose-city__input"
       v-model="city"
       placeholder="Search city"
@@ -51,7 +52,22 @@ export default {
       city: ''
     }
   },
+  mounted() {
+    document.addEventListener('keydown', this.onKeyPress)
+    this.$refs.input?.focus()
+  },
+  beforeUnmount() {
+    document.removeEventListener('keydown', this.onKeyPress)
+  },
   methods: {
+    onKeyPress({ key }) {
+      switch (key) {
+        case 'Enter':
+          return this.add()
+        case 'Escape':
+          return this.close()
+      }
+    },
     clear() {
       this.city = ''
     },

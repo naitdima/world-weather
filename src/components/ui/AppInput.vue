@@ -3,6 +3,7 @@
     :class="['app-input', { 'app-input_error': error }]"
   >
     <input
+      ref="input"
       class="app-input__input"
       :placeholder="placeholder"
       :value="modelValue"
@@ -25,7 +26,12 @@ export default {
     placeholder: String,
     error: String,
   },
-  emits: ['update:modelValue']
+  emits: ['update:modelValue'],
+  methods: {
+    focus() {
+      this.$refs.input?.focus()
+    }
+  }
 }
 </script>
 
