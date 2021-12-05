@@ -1,7 +1,5 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/world-weather/'
-    : '/'
+  publicPath: process.env.NODE_ENV === 'production' ? '/world-weather/' : '/',
   chainWebpack: config => {
     config.module
       .rule('svg-sprite')
