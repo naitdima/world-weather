@@ -40,6 +40,7 @@
       @add="addWeatherByCityName"
       @close="chooseCityModalIsVisible = false"
   />
+  <notifications position="bottom center" />
 </template>
 
 <script>
@@ -97,6 +98,7 @@ export default {
     async addWeatherByCityName(cityName) {
       const weather = await this.getWeatherByCityName(cityName)
       this.weathers.push(weather)
+      this.chooseCityModalIsVisible = false
     },
     async getWeatherByCityName(cityName) {
       const city = await Weather.getByCity(cityName)

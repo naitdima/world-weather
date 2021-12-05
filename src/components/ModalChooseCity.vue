@@ -7,7 +7,8 @@
     <app-input
       ref="input"
       class="modal-choose-city__input"
-      v-model="city"
+      v-model="v$.name.$model"
+      :error="inputError"
       placeholder="Search city"
     />
     <div class="modal-choose-city__actions">
@@ -39,27 +40,61 @@ import AppModal from '@/components/ui/AppModal.vue'
 import AppInput from '@/components/ui/AppInput.vue'
 import AppButton from '@/components/ui/AppButton.vue'
 
+import useVuelidate from '@vuelidate/core'
+import { required, helpers } from '@vuelidate/validators'
+
 export default {
   name: 'ModalChooseCity',
-  emits: ['close'],
+  emits: ['close', 'add'],
   components: {
     AppModal,
     AppInput,
     AppButton
   },
+  setup () {
+    return { v$: useVuelidate() }
+  },
   data() {
     return {
-      city: ''
+      name: ''
+    }
+  },
+  validations () {
+    return {
+      name: {
+        required: helpers.withMessage('City name cannot be empty', required),
+        regex: helpers.regex(/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/)
+      }
+    }
+  },
+  computed: {
+    inputError() {
+      const { $errors } = this.v$.name
+      if ($errors.length === 0) {
+        return null
+      }
+      const [{ $validator }] = $errors
+      switch ($validator) {
+        case 'required':
+          return 'City name cannot be empty'
+        case 'regex':
+          return 'City name is not valid. Use only latin letters, spaces and dashes.'
+        default:
+          return 'City name is not valid'
+      }
     }
   },
   mounted() {
     document.addEventListener('keydown', this.onKeyPress)
-    this.$refs.input?.focus()
+    this.focusInput()
   },
   beforeUnmount() {
     document.removeEventListener('keydown', this.onKeyPress)
   },
   methods: {
+    focusInput() {
+      this.$refs.input?.focus()
+    },
     onKeyPress({ key }) {
       switch (key) {
         case 'Enter':
@@ -69,15 +104,19 @@ export default {
       }
     },
     clear() {
-      this.city = ''
+      this.name = ''
+      this.v$.$reset()
+      this.focusInput()
     },
     close() {
       this.$emit('close')
     },
     add() {
-      // @todo: validation
-      this.$emit('add', this.city)
-      this.close()
+      this.v$.$touch()
+      if (this.v$.$invalid) {
+        return
+      }
+      this.$emit('add', this.name)
     }
   }
 }
