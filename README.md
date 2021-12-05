@@ -1,5 +1,7 @@
 # world-weather
 
+## **[Demo](https://naitdima.github.io/world-weather/)**
+
 ## Project setup
 ```
 npm install
