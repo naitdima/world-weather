@@ -6,6 +6,8 @@
         v-if="currentWeather"
         class="main-page__weather-card main-page__weather-card_current"
         :weather="currentWeather"
+        current
+        @reload="reloadCurrentWeather"
     />
     <p
         v-else-if="currentWeather === null"
@@ -18,11 +20,13 @@
         class="main-page__weather-cards"
     >
       <card-weather
-          v-for="weather in weathers"
+          v-for="(weather, index) in weathers"
           :key="weather.city.id"
           class="main-page__weather-card"
           :weather="weather"
           removable
+          @reload="reloadWeather(weather, index)"
+          @remove="removeWeather(index)"
       />
     </div>
     <app-button
@@ -67,16 +71,27 @@ export default {
     weathers: {
       deep: true,
       handler(val) {
-        // @todo: Исправить - города меняются местами
         localStorage.setItem('WEATHER_CITY_NAMES', JSON.stringify(val.map(weather => weather.city.name)))
       }
     }
   },
   methods: {
+    async reloadCurrentWeather() {
+      const { city: { name } } = this.currentWeather
+      this.currentWeather = await this.getWeatherByCityName(name)
+    },
+    async reloadWeather({ city: { name } }, index) {
+      const weather = await this.getWeatherByCityName(name)
+      this.weathers.splice(index, 1, weather)
+    },
+    removeWeather(index) {
+      this.weathers.splice(index, 1)
+    },
     async getSavedWeathers() {
       const savedWeatherCityNames = localStorage.getItem('WEATHER_CITY_NAMES')
       if (savedWeatherCityNames) {
-        await Promise.all(JSON.parse(savedWeatherCityNames).map(this.addWeatherByCityName))
+        const savedWeathers = await Promise.all(JSON.parse(savedWeatherCityNames).map(this.getWeatherByCityName))
+        this.weathers.push(...savedWeathers)
       }
     },
     async addWeatherByCityName(cityName) {

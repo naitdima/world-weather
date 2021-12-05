@@ -4,7 +4,7 @@
       {{ weather.city.name }}
     </h3>
     <p class="card-weather__location">
-      {{ weather.country.name.common }}
+      {{ current ? 'Your current location' : weather.country.name.common }}
     </p>
     <div class="card-weather__params">
       <div
@@ -15,7 +15,10 @@
         <div class="card-weather__params-cell">{{ title }}</div>
         <div class="card-weather__params-cell">{{ value }}</div>
       </div>
-      <p class="card-weather__updated_date">
+      <p
+          class="card-weather__timer"
+          :key="timerKey"
+      >
         {{ getTimeAgo(weather.updatedDate) }}
       </p>
     </div>
@@ -43,8 +46,12 @@
 import { getTimeAgo } from '@/utils/formatDate'
 import AppButton from '@/components/ui/AppButton.vue'
 
+const getCurrentISODate = () => (new Date).toISOString()
+const MINUTE_IN_MILLISECONDS = 60000
+
 export default {
   name: 'CardWeather',
+  emits: ['reload', 'remove'],
   components: {
     AppButton
   },
@@ -53,9 +60,19 @@ export default {
       type: Object,
       required: true
     },
+    current: {
+      type: Boolean,
+      default: false
+    },
     removable: {
       type: Boolean,
       default: false
+    }
+  },
+  data() {
+    return {
+      timer: null,
+      timerKey: getCurrentISODate()
     }
   },
   computed: {
@@ -67,6 +84,12 @@ export default {
         Humidity: `${main.humidity} %`
       }
     }
+  },
+  mounted() {
+    this.timer = setInterval(() => this.timerKey = getCurrentISODate(), MINUTE_IN_MILLISECONDS);
+  },
+  beforeUnmount() {
+    clearInterval(this.timer)
   },
   methods: {
     getTimeAgo
@@ -122,7 +145,7 @@ export default {
   line-height: 24px;
 }
 
-.card-weather__updated_date {
+.card-weather__timer {
   margin-bottom: 32px;
   text-align: right;
   font-size: 16px;
