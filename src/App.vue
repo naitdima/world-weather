@@ -96,6 +96,13 @@ export default {
       }
     },
     async addWeatherByCityName(cityName) {
+      const alreadyHasWeather = this.weathers.some(weather => weather.city.name === cityName)
+      if (alreadyHasWeather) {
+        return this.$notify({
+          type: 'error',
+          text: 'Weather for this city is already displayed'
+        })
+      }
       const weather = await this.getWeatherByCityName(cityName)
       this.weathers.push(weather)
       this.chooseCityModalIsVisible = false
