@@ -10,7 +10,7 @@ const ERROR_MESSAGE = {
 class Weather extends Base {
   async getByCity(city) {
     try {
-      return await this._api.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${VUE_APP_OPENWEATHERMAP_API_KEY}&units=metric`)
+      return await this._api.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${VUE_APP_OPENWEATHERMAP_API_KEY}&units=metric`)
     } catch (e) {
       const errorMessage = ERROR_MESSAGE[e.code]
       if (errorMessage) {
