@@ -3,7 +3,8 @@ import Base from '@/api/base'
 const { VUE_APP_OPENWEATHERMAP_API_KEY } = process.env
 
 const ERROR_MESSAGE = {
-    401: 'Check that the API-key is correct'
+    401: 'Check that the API-key is correct',
+    404: 'Weather for this city not found'
 }
 
 class Weather extends Base {
@@ -13,7 +14,7 @@ class Weather extends Base {
         } catch (e) {
             const errorMessage = ERROR_MESSAGE[e.code]
             if (errorMessage) {
-                throw NetworkError(e.code, errorMessage)
+                throw new NetworkError(e.code, errorMessage)
             } else {
                 throw e
             }
