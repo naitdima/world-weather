@@ -3,30 +3,30 @@
     <h1 class="main-page__title">World Weather</h1>
     <p class="main-page__description">Watch weather in your current location</p>
     <card-weather
-        v-if="currentWeather"
-        class="main-page__weather-card main-page__weather-card_current"
-        :weather="currentWeather"
-        current
-        @reload="reloadCurrentWeather"
+      v-if="currentWeather"
+      class="main-page__weather-card main-page__weather-card_current"
+      :weather="currentWeather"
+      current
+      @reload="reloadCurrentWeather"
     />
     <p
-        v-else-if="currentWeather === null"
-        class="main-page__error"
+      v-else-if="currentWeather === null"
+      class="main-page__error"
     >
       Failed to get the current location
     </p>
     <div
-        v-if="weathers.length > 0"
-        class="main-page__weather-cards"
+      v-if="weathers.length > 0"
+      class="main-page__weather-cards"
     >
       <card-weather
-          v-for="(weather, index) in weathers"
-          :key="weather.city.id"
-          class="main-page__weather-card"
-          :weather="weather"
-          removable
-          @reload="reloadWeather(weather, index)"
-          @remove="removeWeather(index)"
+        v-for="(weather, index) in weathers"
+        :key="weather.city.id"
+        class="main-page__weather-card"
+        :weather="weather"
+        removable
+        @reload="reloadWeather(weather, index)"
+        @remove="removeWeather(index)"
       />
     </div>
     <app-button
@@ -36,9 +36,9 @@
     />
   </div>
   <modal-choose-city
-      v-if="chooseCityModalIsVisible"
-      @add="addWeatherByCityName"
-      @close="chooseCityModalIsVisible = false"
+    v-if="chooseCityModalIsVisible"
+    @add="addWeatherByCityName"
+    @close="chooseCityModalIsVisible = false"
   />
   <notifications position="bottom center" />
 </template>

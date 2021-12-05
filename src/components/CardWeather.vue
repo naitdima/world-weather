@@ -8,33 +8,33 @@
     </p>
     <div class="card-weather__params">
       <div
-          v-for="(value, title) in params"
-          :key="title"
-          class="card-weather__params-row"
+        v-for="(value, title) in params"
+        :key="title"
+        class="card-weather__params-row"
       >
         <div class="card-weather__params-cell">{{ title }}</div>
         <div class="card-weather__params-cell">{{ value }}</div>
       </div>
     </div>
     <p
-        class="card-weather__timer"
-        :key="timerKey"
+      class="card-weather__timer"
+      :key="timerKey"
     >
       {{ getTimeAgo(weather.updatedDate) }}
     </p>
     <div class="card-weather__actions">
       <app-button
-          class="card-weather__action"
-          type="primary"
-          @click="$emit('reload')"
+        class="card-weather__action"
+        type="primary"
+        @click="$emit('reload')"
       >
         Reload
       </app-button>
       <app-button
-          v-if="removable"
-          class="card-weather__action"
-          type="primary"
-          @click="$emit('remove')"
+        v-if="removable"
+        class="card-weather__action"
+        type="primary"
+        @click="$emit('remove')"
       >
         Remove
       </app-button>

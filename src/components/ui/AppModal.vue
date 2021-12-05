@@ -2,7 +2,10 @@
   <teleport to="body">
     <div class="app-modal">
       <div class="app-modal__overlay"></div>
-      <div class="app-modal__container" v-bind="$attrs">
+      <div
+        class="app-modal__container"
+        v-bind="$attrs"
+      >
         <h5 class="app-modal__title">{{ title }}</h5>
         <p class="app-modal__description">{{ description }}</p>
         <slot/>

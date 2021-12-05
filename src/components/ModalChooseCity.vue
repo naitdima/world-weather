@@ -1,8 +1,8 @@
 <template>
   <app-modal
-      class="modal-choose-city"
-      title="Choose a city"
-      description="To find city start typing and pick one from the suggestions"
+    class="modal-choose-city"
+    title="Choose a city"
+    description="To find city start typing and pick one from the suggestions"
   >
     <app-input
       ref="input"
@@ -26,8 +26,8 @@
         Cancel
       </app-button>
       <app-button
-          class="modal-choose-city__action"
-          @click="add"
+        class="modal-choose-city__action"
+        @click="add"
       >
         Add
       </app-button>
