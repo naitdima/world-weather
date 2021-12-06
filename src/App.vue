@@ -96,14 +96,15 @@ export default {
       }
     },
     async addWeatherByCityName(cityName) {
-      const alreadyHasWeather = this.weathers.some(weather => weather.city.name === cityName)
+      const weather = await this.getWeatherByCityName(cityName)
+      const { city: { id } } = weather
+      const alreadyHasWeather = this.weathers.some(weather => weather.city.id === id)
       if (alreadyHasWeather) {
         return this.$notify({
           type: 'error',
           text: 'Weather for this city is already displayed'
         })
       }
-      const weather = await this.getWeatherByCityName(cityName)
       this.weathers.push(weather)
       this.chooseCityModalIsVisible = false
     },
