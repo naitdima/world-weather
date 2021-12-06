@@ -7,7 +7,7 @@
       class="main-page__weather-card main-page__weather-card_current"
       :weather="currentWeather"
       current
-      @reload="reloadCurrentWeather"
+      @reload="getCurrentWeather"
     />
     <p
       v-else-if="currentWeather === null"
@@ -77,10 +77,6 @@ export default {
     }
   },
   methods: {
-    async reloadCurrentWeather() {
-      const { city: { name } } = this.currentWeather
-      this.currentWeather = await this.getWeatherByCityName(name)
-    },
     async reloadWeather({ city: { name } }, index) {
       const weather = await this.getWeatherByCityName(name)
       this.weathers.splice(index, 1, weather)
@@ -128,8 +124,9 @@ export default {
         const { coords: { latitude, longitude } } = await getCurrentPosition()
         const { city } = await Geocoding.getCityByGeoCoords(latitude, longitude)
         this.currentWeather = await this.getWeatherByCityName(city)
-      } catch {
+      } catch (e) {
         this.currentWeather = null
+        throw e
       }
     }
   }
